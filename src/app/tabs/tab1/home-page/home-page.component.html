@@ -1,0 +1,55 @@
+<ion-grid [fixed]="true">
+  <ion-row>
+    <ion-col>
+      <ion-row class="ion-justify-content-center"><strong>+300€</strong></ion-row>
+      <ion-row class="ion-justify-content-center"><p>Account Balance</p></ion-row>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="auto">
+      <ion-button>
+        <ion-icon slot="start" name="trending-up-outline"></ion-icon>
+        <p>Incomes</p>
+        <strong>3000€</strong>
+      </ion-button>
+    </ion-col>
+
+    <ion-col size="auto">
+      <ion-button>
+        <ion-icon slot="start" name="trending-down-outline"></ion-icon>
+        <p>Expenses</p>
+        <strong>1700€</strong>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-segment value="timeperiod">
+      <ion-segment-button value="today">
+        <ion-label>Today</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="week">
+        <ion-label>Week</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="month">
+        <ion-label>Month</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="year">
+        <ion-label>Year</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-row>
+
+  <ion-row>
+    <p>Recent Transaction</p>
+  </ion-row>
+
+  <ion-row>
+    <ion-list>
+      <ion-item>
+        <transaction-card></transaction-card>
+      </ion-item>
+    </ion-list>
+  </ion-row>
+</ion-grid>
