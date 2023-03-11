@@ -1,8 +1,15 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Transaction
-    </ion-title>
+    <ion-grid class="ion-no-padding">
+      <ion-row class="ion-align-items-center">
+        <ion-col size="auto">
+          <ion-title>Transaction</ion-title>
+        </ion-col>
+        <ion-col size="auto">
+          <select-month></select-month>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-toolbar>
 </ion-header>
 
@@ -13,5 +20,5 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Transaction page"></app-explore-container>
+  <transaction-page></transaction-page>
 </ion-content>
