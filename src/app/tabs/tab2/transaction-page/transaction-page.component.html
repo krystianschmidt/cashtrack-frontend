@@ -1,5 +1,57 @@
-<ion-list>
-  <ion-item>
-    <transaction-card></transaction-card>
-  </ion-item>
-</ion-list>
+<!--
+year > month > week > day
+-->
+
+<ion-grid>
+  <ion-row class="ion-justify-content-center">
+    <ion-button>See your financial report ></ion-button>
+  </ion-row>
+  <ion-row>
+    <h5>Today</h5>
+  </ion-row>
+  <ion-row>
+    <ion-list class="w-100">
+      <ion-item>
+        <transaction-card class="w-100"></transaction-card>
+      </ion-item>
+    </ion-list>
+  </ion-row>
+</ion-grid>
+
+
+
+<ion-modal #modal trigger="open-modal" [initialBreakpoint]="0.50" [breakpoints]="[0, 0.25, 0.5, 0.75]">
+  <ng-template>
+    <ion-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>Filter Transaction</ion-col>
+          <ion-col><ion-chip>Reset</ion-chip></ion-col>
+        </ion-row>
+        <ion-row>Filter By</ion-row>
+        <ion-row>
+          <ion-col><ion-chip>Income</ion-chip></ion-col>
+          <ion-col><ion-chip>Expense</ion-chip></ion-col>
+        </ion-row>
+        <ion-row>Sort By</ion-row>
+        <ion-row>
+          <ion-col><ion-chip>Highest</ion-chip></ion-col>
+          <ion-col><ion-chip>Lowest</ion-chip></ion-col>
+          <ion-col><ion-chip>Newest</ion-chip></ion-col>
+          <ion-col><ion-chip>Oldest</ion-chip></ion-col>
+        </ion-row>
+        <ion-row>Category</ion-row>
+        <ion-row>
+          <ion-col>Choose Category</ion-col>
+          <ion-col>
+            <!--TODO: Add selection tab-->
+            <ion-button id="select-category">0 selected ></ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-button>Apply</ion-button>
+        </ion-row>
+      </ion-grid>
+    </ion-content>
+  </ng-template>
+</ion-modal>

@@ -1,12 +1,18 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-grid class="ion-no-padding">
-      <ion-row class="ion-align-items-center">
-        <ion-col size="auto">
+      <ion-row class="ion-align-items-center ion-justify-content-center">
+        <ion-col size="auto" class="ion-hide-md-down position-absolute left-0">
           <ion-title>Transaction</ion-title>
         </ion-col>
         <ion-col size="auto">
           <select-month></select-month>
+        </ion-col>
+        <ion-col size="auto" class="position-absolute right-0">
+          <!--TODO: Add badge to see if a filter is settet-->
+          <ion-button id="open-modal" class="ion-padding-horizontal">
+            <ion-icon slot="icon-only" name="filter-outline"></ion-icon>
+          </ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>
