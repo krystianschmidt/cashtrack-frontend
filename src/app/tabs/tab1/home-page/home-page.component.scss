@@ -1,9 +1,9 @@
 #incomes-element{
-  background: #00A86B;
+  background: var(--ion-color-success);
   border-radius: 28px;
 }
 
 #expenses-element{
-  background: #FD3C4A;
+  background: var(--ion-color-danger);
   border-radius: 28px;
 }

@@ -9,12 +9,11 @@
 
     <ion-tab-button tab="transaction">
       <ion-icon aria-hidden="true" name="swap-vertical-outline"></ion-icon>
-      <ion-label>Transaction</ion-label>
+      <ion-label>Purchase</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="add">
-      <ion-icon aria-hidden="true" name="add"></ion-icon>
-      <ion-label>Add</ion-label>
+    <ion-tab-button>
+      <!--Placeholder for ion-fab list-->
     </ion-tab-button>
 
     <ion-tab-button tab="budget">
@@ -27,5 +26,18 @@
       <ion-label>Profile</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
-
 </ion-tabs>
+
+<ion-fab slot="fixed" vertical="bottom" horizontal="center">
+  <ion-fab-button>
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+  <ion-fab-list side="top">
+      <ion-fab-button color="danger" (click)="presentAddTransactionModal(true)">
+        <ion-icon name="trending-down-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="success" (click)="presentAddTransactionModal(false)">
+        <ion-icon name="trending-up-outline"></ion-icon>
+      </ion-fab-button>
+  </ion-fab-list>
+</ion-fab>

@@ -37,6 +37,14 @@
   right: 0;
 }
 
+.bottom-0{
+  bottom: 0;
+}
+
+.top-0{
+  top: 0;
+}
+
 .w-100{
   width: 100%;
 }
@@ -45,4 +53,20 @@
 }
 .w-25{
   width: 25%;
+}
+
+.d-flex{
+  display: flex;
+}
+
+.d-grid{
+  display: grid;
+}
+
+.justify-items-center{
+  justify-items: center;
+}
+
+.justify-items-end{
+  justify-items: end;
 }

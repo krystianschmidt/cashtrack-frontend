@@ -4,11 +4,12 @@ import {TransactionCardComponent} from "./components/transaction-card/transactio
 import {IonicModule} from "@ionic/angular";
 import {FormsModule} from "@angular/forms";
 import {SelectMonthComponent} from "./components/select-month/select-month.component";
+import {NavLinkComponent} from "./components/nav-link/nav-link.component";
 
 
 
 @NgModule({
-  declarations: [TransactionCardComponent, SelectMonthComponent],
+  declarations: [TransactionCardComponent, SelectMonthComponent, NavLinkComponent],
   exports: [
     TransactionCardComponent,
     SelectMonthComponent
