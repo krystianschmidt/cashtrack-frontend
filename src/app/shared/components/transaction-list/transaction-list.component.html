@@ -1,0 +1,16 @@
+<ion-list class="ion-no-padding">
+  <ng-container *ngFor="let transactionGroup of transactionGroups">
+    <ion-item-divider class="sticky-divider">
+      <ion-label>{{ formatDate(transactionGroup.date) }}</ion-label>
+    </ion-item-divider>
+    <ion-item-group>
+      <transaction-card *ngFor="let transaction of transactionGroup.transactions" [transaction]="transaction"></transaction-card>
+    </ion-item-group>
+  </ng-container>
+</ion-list>
+
+<ion-infinite-scroll class="ion-padding" threshold="100px" (ionInfinite)="loadMoreTransactions($event)">
+  <ion-infinite-scroll-content loadingSpinner="crescent" loadingText="Loading more transactions...">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>
+

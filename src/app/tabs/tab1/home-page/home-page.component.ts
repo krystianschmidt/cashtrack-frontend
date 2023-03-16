@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {InfiniteScrollCustomEvent, IonInfiniteScroll} from "@ionic/angular";
+import {exampleData} from "../../../example-data/transaction-card";
 
 @Component({
   selector: 'home-page',
@@ -6,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-page.component.scss'],
 })
 export class HomePageComponent {
+  transactions = exampleData;
 
-  constructor() { }
+  constructor() {
+  }
 
-  ngOnInit() {}
+
+  ngOnInit() {
+
+  }
+
+
+
+
 
 }

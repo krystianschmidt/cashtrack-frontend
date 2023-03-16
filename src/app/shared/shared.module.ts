@@ -5,14 +5,16 @@ import {IonicModule} from "@ionic/angular";
 import {FormsModule} from "@angular/forms";
 import {SelectMonthComponent} from "./components/select-month/select-month.component";
 import {NavLinkComponent} from "./components/nav-link/nav-link.component";
+import {TransactionListComponent} from "./components/transaction-list/transaction-list.component";
 
 
 
 @NgModule({
-  declarations: [TransactionCardComponent, SelectMonthComponent, NavLinkComponent],
+  declarations: [TransactionCardComponent, TransactionListComponent, SelectMonthComponent, NavLinkComponent],
   exports: [
     TransactionCardComponent,
-    SelectMonthComponent
+    SelectMonthComponent,
+    TransactionListComponent
   ],
   imports: [
     IonicModule,
