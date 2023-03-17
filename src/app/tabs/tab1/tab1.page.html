@@ -6,7 +6,7 @@
           <ion-title class="ion-hide-md-down">Home</ion-title>
         </ion-col>
         <ion-col class="d-flex ion-justify-content-center">
-          <select-month></select-month>
+          <select-month (monthChanged)="onMonthChanged($event)"></select-month>
         </ion-col>
         <ion-col></ion-col>
       </ion-row>
@@ -21,5 +21,5 @@
     </ion-toolbar>
   </ion-header>
 
-  <home-page></home-page>
+  <home-page [selectedMonth]="selectedMonth"></home-page>
 </ion-content>

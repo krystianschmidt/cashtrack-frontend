@@ -1,4 +1,4 @@
-<ion-list class="ion-no-padding">
+<ion-list class="ion-no-padding" *ngIf="transactionGroups.length > 0; else noTransactions">
   <ng-container *ngFor="let transactionGroup of transactionGroups">
     <ion-item-divider class="sticky-divider">
       <ion-label>{{ formatDate(transactionGroup.date) }}</ion-label>
@@ -8,6 +8,12 @@
     </ion-item-group>
   </ng-container>
 </ion-list>
+
+<ng-template #noTransactions>
+  <ion-text color="medium" class="ion-padding">
+    No transactions for the selected month.
+  </ion-text>
+</ng-template>
 
 <ion-infinite-scroll class="ion-padding" threshold="100px" (ionInfinite)="loadMoreTransactions($event)">
   <ion-infinite-scroll-content loadingSpinner="crescent" loadingText="Loading more transactions...">

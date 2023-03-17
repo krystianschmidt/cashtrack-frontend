@@ -1,6 +1,10 @@
 <!-- src/app/shared/components/month-selector/month-selector.component.html -->
 <ion-item>
-  <ion-select [(ngModel)]="selectedMonth" placeholder="Select Month">
+  <ion-select
+    [(ngModel)]="selectedMonth"
+    (ionChange)="onMonthChange()"
+    placeholder="Select Month"
+    interface="popover">
     <ion-select-option *ngFor="let month of months" [value]="month.value">{{ month.name }}</ion-select-option>
   </ion-select>
 </ion-item>

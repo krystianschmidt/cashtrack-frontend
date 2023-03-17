@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit, SimpleChanges} from '@angular/core';
 import { Transaction } from "../transaction-card/transaction-card.model";
 import { exampleData } from "../../../example-data/transaction-card";
 
@@ -13,18 +13,27 @@ interface TransactionGroup {
   styleUrls: ['./transaction-list.component.scss'],
 })
 export class TransactionListComponent implements OnInit {
-
+  @Input() selectedMonth: number;
   transactionGroups: TransactionGroup[] = [];
 
-  constructor() { }
+  constructor() {
+    this.selectedMonth = new Date().getMonth();
+  }
 
   ngOnInit() {
     this.transactionGroups = this.groupTransactionsByDate(exampleData);
     console.log('transactionGroups:', this.transactionGroups);
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['selectedMonth']) {
+      this.transactionGroups = this.groupTransactionsByDate(exampleData);
+    }
+  }
+
   groupTransactionsByDate(transactions: Transaction[]): TransactionGroup[] {
     const groups: TransactionGroup[] = [];
+    transactions = transactions.filter(transaction => new Date(transaction.timestamp).getMonth() === this.selectedMonth);
 
     // Sort the transactions by date in descending order
     transactions.sort((a, b) => {

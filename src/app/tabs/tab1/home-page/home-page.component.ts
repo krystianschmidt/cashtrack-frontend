@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {InfiniteScrollCustomEvent, IonInfiniteScroll} from "@ionic/angular";
 import {exampleData} from "../../../example-data/transaction-card";
 
@@ -8,18 +8,13 @@ import {exampleData} from "../../../example-data/transaction-card";
   styleUrls: ['./home-page.component.scss'],
 })
 export class HomePageComponent {
-  transactions = exampleData;
-
-  constructor() {
-  }
-
+  @Input() selectedMonth: number;
 
   ngOnInit() {
-
   }
 
-
-
-
+  constructor() {
+    this.selectedMonth = new Date().getMonth();
+  }
 
 }

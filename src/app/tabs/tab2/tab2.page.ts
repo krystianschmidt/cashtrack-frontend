@@ -6,7 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
+  selectedMonth: number;
 
-  constructor() {}
+  constructor() {
+    this.selectedMonth = new Date().getMonth();
+  }
 
+  onMonthChanged(selectedMonth: number) {
+    this.selectedMonth = selectedMonth;
+    console.log(selectedMonth + "selected month tab 1")
+  }
 }
