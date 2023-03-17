@@ -1,0 +1,52 @@
+<ion-modal #filterModal [initialBreakpoint]="0.70" [breakpoints]="[0, 0.25, 0.5, 0.75]">
+  <ng-template>
+    <ion-content>
+      <ion-grid>
+        <ion-row class="center ion-padding-bottom">
+          <ion-col>Filter Transaction</ion-col>
+          <ion-col class="d-flex ion-justify-content-end">
+            <ion-chip (click)="resetFilter()">Reset</ion-chip>
+          </ion-col>
+        </ion-row>
+        <ion-row>Filter By</ion-row>
+        <ion-row class="ion-padding-bottom">
+          <ion-col class="center">
+            <ion-chip [outline]="filter.filterBy !== 'all'" (click)="setFilterBy('all')">All</ion-chip>
+          </ion-col>
+          <ion-col class="center">
+            <ion-chip [outline]="filter.filterBy !== 'income'" (click)="setFilterBy('income')">Income</ion-chip>
+          </ion-col>
+          <ion-col class="center">
+            <ion-chip [outline]="filter.filterBy !== 'expense'" (click)="setFilterBy('expense')">Expense</ion-chip>
+          </ion-col>
+        </ion-row>
+        <ion-row>Sort By</ion-row>
+        <ion-row class="ion-padding-bottom">
+          <ion-col class="center">
+            <ion-chip [outline]="filter.sortBy !== 'highest'" (click)="setSortBy('highest')">Highest</ion-chip>
+          </ion-col>
+          <ion-col class="center">
+            <ion-chip [outline]="filter.sortBy !== 'lowest'" (click)="setSortBy('lowest')">Lowest</ion-chip>
+          </ion-col>
+          <ion-col class="center">
+            <ion-chip [outline]="filter.sortBy !== 'newest'" (click)="setSortBy('newest')">Newest</ion-chip>
+          </ion-col>
+          <ion-col class="center">
+            <ion-chip [outline]="filter.sortBy !== 'oldest'" (click)="setSortBy('oldest')">Oldest</ion-chip>
+          </ion-col>
+        </ion-row>
+        <ion-row>Category</ion-row>
+        <ion-row class="ion-padding-bottom">
+          <ion-col class="d-flex ion-align-items-center">Choose Category</ion-col>
+          <ion-col class="d-flex ion-justify-content-end">
+            <!--TODO: Add selection tab-->
+            <ion-button fill="clear" id="select-category">0 selected ></ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-button class="w-100" (click)="applyFilter()">Apply</ion-button>
+        </ion-row>
+      </ion-grid>
+    </ion-content>
+  </ng-template>
+</ion-modal>

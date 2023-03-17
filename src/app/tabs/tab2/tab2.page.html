@@ -10,7 +10,7 @@
         </ion-col>
         <ion-col class="d-flex ion-justify-content-end">
           <!--TODO: Add badge to see if a filter is settet-->
-          <ion-button id="open-modal" class="ion-padding-horizontal">
+          <ion-button (click)="openFilterModal()" class="ion-padding-horizontal">
             <ion-icon slot="icon-only" name="filter-outline"></ion-icon>
           </ion-button>
         </ion-col>
@@ -26,5 +26,8 @@
     </ion-toolbar>
   </ion-header>
 
-  <transaction-page [selectedMonth]="selectedMonth"></transaction-page>
+  <transaction-page [selectedMonth]="selectedMonth" [filter]="filter"></transaction-page>
 </ion-content>
+
+<filter-transaction-list (filterApplied)="onFilterApplied($event)"></filter-transaction-list>
+

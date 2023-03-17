@@ -8,6 +8,7 @@ import { ExploreContainerComponentModule } from '../../explore-container/explore
 import { Tab2PageRoutingModule } from './tab2-routing.module';
 import {TransactionPageComponent} from "./transaction-page/transaction-page.component";
 import {SharedModule} from "../../shared/shared.module";
+import {FilterTransactionListComponent} from "./components/filter-transaction-list/filter-transaction-list.component";
 
 @NgModule({
   imports: [
@@ -18,6 +19,6 @@ import {SharedModule} from "../../shared/shared.module";
     Tab2PageRoutingModule,
     SharedModule
   ],
-  declarations: [Tab2Page, TransactionPageComponent]
+  declarations: [Tab2Page, TransactionPageComponent, FilterTransactionListComponent]
 })
 export class Tab2PageModule {}
