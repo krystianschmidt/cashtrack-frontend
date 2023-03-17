@@ -1,0 +1,29 @@
+<ion-content>
+  <div class="content-container" (click)="cancelChanges()">
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="4">
+          <img [src]="profilePictureUrl" class="profile-picture" />
+        </ion-col>
+        <ion-col class="d-grid" size="6">
+          <ion-text class="ion-padding-bottom" color="medium">{{ username }}</ion-text>
+           <div class="d-flex">
+             <ion-text class="padding-end" *ngIf="!editMode">{{ firstName }}</ion-text>
+             <ion-text *ngIf="!editMode">{{ lastName }}</ion-text>
+           </div>
+          <div class="d-flex" *ngIf="editMode" (click)="$event.stopPropagation()">
+            <ion-input class="ion-no-padding" [(ngModel)]="firstName" placeholder="First Name" required></ion-input>
+            <ion-input class="ion-no-padding" [(ngModel)]="lastName" placeholder="Last Name"></ion-input>
+          </div>
+        </ion-col>
+        <ion-col size="2">
+          <ion-icon *ngIf="!editMode" name="create-outline" (click)="toggleEditMode($event)"></ion-icon>
+          <ion-icon *ngIf="editMode" name="checkmark-outline" (click)="toggleEditMode($event)"></ion-icon>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <profile-list class="w-100 ion-padding-top"></profile-list>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
