@@ -1,0 +1,85 @@
+<!-- create-category-modal.component.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <ion-col>
+          <ion-buttons>
+            <ion-button color="medium" (click)="cancel()">
+              <ion-icon slot="start" name="chevron-back-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-col>
+        <ion-col>
+          <ion-title class="ion-text-center">Create Category</ion-title>
+        </ion-col>
+        <ion-col></ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form #form="ngForm" (ngSubmit)="createCategory()">
+    <ion-list class="border-round">
+      <ion-item>
+        <ion-label position="floating">Category Name</ion-label>
+        <ion-input [(ngModel)]="category.label" required name="label"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="3" class="ion-align-self-center">
+              <ion-label>Icon</ion-label>
+            </ion-col>
+            <ion-col size="9">
+              <ion-grid>
+                <ion-row>
+                  <ion-col size="4" *ngFor="let icon of availableIcons" (click)="selectIcon(icon)" class="icon-container">
+                    <ion-icon [name]="icon" [style.color]="category.iconName === icon ? category.color : null" [class.selected]="category.iconName === icon"></ion-icon>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="3"></ion-col>
+            <ion-col size="9" class="ion-text-center">
+              <ion-button fill="clear" size="small" (click)="openIconPicker()">More...</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="3" class="ion-align-self-center">
+              <ion-label>Color</ion-label>
+            </ion-col>
+            <ion-col size="9">
+              <ion-grid>
+                <ion-row>
+                  <ion-col size="4" *ngFor="let color of availableColors" (click)="selectColor(color)" class="color-container">
+                    <div [style.background-color]="color" [class.selected]="category.color === color"></div>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="3"></ion-col>
+            <ion-col size="9" class="ion-text-center">
+              <ion-button fill="clear" size="small" (click)="openColorPicker()">More...</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+
+      <ion-item class="d-grid ion-justify-content-center">
+        <ion-button size="medium" type="submit" [disabled]="!form.valid">Create Category</ion-button>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>

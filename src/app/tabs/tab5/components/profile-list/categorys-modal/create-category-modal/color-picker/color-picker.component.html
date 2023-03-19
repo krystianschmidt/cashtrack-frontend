@@ -1,0 +1,11 @@
+<!-- color-picker.component.html -->
+<ion-grid>
+  <ion-row>
+    <ion-col *ngFor="let color of availableColors" class="color-container" (click)="updateSelectedColor(color)">
+      <div [style.background-color]="color" [class.selected]="selectedColor === color"></div>
+    </ion-col>
+  </ion-row>
+  <ion-row class="d-grid ion-justify-content-center">
+    <ion-button expand="block" (click)="selectColor()">OK</ion-button>
+  </ion-row>
+</ion-grid>

@@ -1,0 +1,11 @@
+<!-- icon-picker.component.html -->
+<ion-grid>
+  <ion-row>
+    <ion-col *ngFor="let icon of availableIcons" class="icon-container" (click)="updateSelectedIcon(icon)">
+      <ion-icon [name]="icon" [style.color]="selectedIconName === icon ? selectedIconColor : null" [class.selected]="selectedIconName === icon"></ion-icon>
+    </ion-col>
+  </ion-row>
+  <ion-row class="d-grid ion-justify-content-center">
+    <ion-button expand="block" (click)="selectIcon()">OK</ion-button>
+  </ion-row>
+</ion-grid>

@@ -1,3 +1,4 @@
+<!--settings-modal.components.html-->
 <ion-header>
   <ion-toolbar>
     <ion-grid>
@@ -17,3 +18,41 @@
     </ion-grid>
   </ion-toolbar>
 </ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list class="border-round">
+    <ion-item (click)="navigateTo('Currency')">
+      <ion-label>Currency</ion-label>
+      <ion-text color="medium" class="ion-padding-end">{{ selectedCurrency }}</ion-text>
+      <ion-icon name="chevron-forward"></ion-icon>
+    </ion-item>
+    <ion-item (click)="navigateTo('Language')">
+      <ion-label>Language</ion-label>
+      <ion-text color="medium" class="ion-padding-end"> </ion-text>
+      <ion-icon name="chevron-forward"></ion-icon>
+    </ion-item>
+    <ion-item (click)="navigateTo('Theme')">
+      <ion-label>Theme</ion-label>
+      <ion-text color="medium" class="ion-padding-end"> </ion-text>
+      <ion-icon name="chevron-forward"></ion-icon>
+    </ion-item>
+    <ion-item (click)="navigateTo('Security')">
+      <ion-label>Security</ion-label>
+      <ion-text color="medium" class="ion-padding-end"> </ion-text>
+      <ion-icon name="chevron-forward"></ion-icon>
+    </ion-item>
+    <ion-item (click)="navigateTo('Notification')">
+      <ion-label>Notification</ion-label>
+      <ion-icon name="chevron-forward"></ion-icon>
+    </ion-item>
+    <ion-item (click)="navigateTo('About')">
+      <ion-label>About</ion-label>
+      <ion-icon name="chevron-forward"></ion-icon>
+    </ion-item>
+    <ion-item (click)="navigateTo('Help')">
+      <ion-label>Help</ion-label>
+      <ion-icon name="chevron-forward"></ion-icon>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

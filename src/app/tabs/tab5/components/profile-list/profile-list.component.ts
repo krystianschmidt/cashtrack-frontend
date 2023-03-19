@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Optional} from '@angular/core';
 import {IonRouterOutlet, ModalController, NavController} from "@ionic/angular";
 import {NavLinkComponent} from "../../../../shared/components/nav-link/nav-link.component";
 import {AddTransactionPageComponent} from "../../../add-transaction-page/add-transaction-page.component";
 import {SettingsModalComponent} from "./settings-modal/settings-modal.component";
 import {CategorysModalComponent} from "./categorys-modal/categorys-modal.component";
+import {ExportDataModalComponent} from "./export-data-modal/export-data-modal.component";
 
 @Component({
   selector: 'profile-list',
@@ -26,6 +27,8 @@ export class ProfileListComponent  implements OnInit {
         return SettingsModalComponent;
       case 'Categorys':
         return CategorysModalComponent;
+      case 'ExportData':
+        return ExportDataModalComponent;
       default:
         return null;
     }
