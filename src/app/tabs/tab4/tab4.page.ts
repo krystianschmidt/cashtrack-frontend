@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Tab4Page implements OnInit {
 
-  constructor() { }
+  selectedMonth: number;
 
   ngOnInit() {
+  }
+
+  constructor() {
+    this.selectedMonth = new Date().getMonth();
+  }
+
+  onMonthChanged(selectedMonth: number) {
+    this.selectedMonth = selectedMonth;
   }
 
 }
