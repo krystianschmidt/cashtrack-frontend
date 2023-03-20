@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, SimpleChanges, ViewChild} from '@angular/core';
-import { Transaction } from "../transaction-card/transaction-card.model";
+import { Transaction } from "./transaction-card/transaction-card.model";
 import { exampleData } from "../../../example-data/transaction-card";
 import {Filter} from "../../../tabs/tab2/components/filter-transaction-list/filter-transaction-list.model";
 
@@ -61,8 +61,6 @@ export class TransactionListComponent implements OnInit {
     } else if (this.filter.sortBy === 'oldest') {
       filteredTransactions.sort((a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime());
     }
-    console.log("Filter:", this.filter);
-    console.log("Filtered transactions:", filteredTransactions);
 
     // Group transactions by date
 
@@ -124,6 +122,22 @@ export class TransactionListComponent implements OnInit {
     }
   }
 
+  onDeleteTransaction(transactionId: string) {
+    // Remove the transaction from unfilteredTransactions
+    this.unfilteredTransactions = this.unfilteredTransactions.filter(transaction => transaction.id !== transactionId);
+
+    // Remove the transaction from the transactionGroups
+    this.transactionGroups = this.transactionGroups.map(group => ({
+      date: group.date,
+      transactions: group.transactions.filter(transaction => transaction.id !== transactionId)
+    })).filter(group => group.transactions.length > 0);
+
+    // Regroup and filter the transactions
+    this.transactionGroups = this.groupTransactionsByDate(this.unfilteredTransactions);
+    this.applyFilter();
+  }
+
+
 
   loadMoreTransactions(event: Event) {
     setTimeout(() => {
@@ -133,5 +147,4 @@ export class TransactionListComponent implements OnInit {
       infiniteScrollElement.complete().then(r => { }); // Mark the infinite scroll as complete
     }, 1000);
   }
-
 }

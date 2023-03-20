@@ -1,7 +1,7 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import {TransactionCardComponent} from "./transaction-card.component";
+import {ComponentFixture, TestBed, waitForAsync} from "@angular/core/testing";
+import {IonicModule} from "@ionic/angular";
 
-import { TransactionCardComponent } from './transaction-card.component';
 
 describe('TransactionCardComponent', () => {
   let component: TransactionCardComponent;

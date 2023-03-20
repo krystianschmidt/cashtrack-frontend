@@ -1,4 +1,4 @@
-import { Transaction } from '../shared/components/transaction-card/transaction-card.model';
+import { Transaction } from '../shared/components/transaction-list/transaction-card/transaction-card.model';
 
 export const exampleData: Transaction[] = [
   {

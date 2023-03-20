@@ -15,7 +15,6 @@ export class Tab1Page {
 
   onMonthChanged(selectedMonth: number) {
     this.selectedMonth = selectedMonth;
-    console.log(selectedMonth + "selected month tab 1")
   }
 
 }
