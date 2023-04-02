@@ -1,3 +1,4 @@
+<!--TODO: Add requirements for the input fields-->
 <ion-header>
   <ion-toolbar>
     <ion-grid>
@@ -30,7 +31,7 @@
       <ion-col>
         <ion-item fill="outline">
           <ion-label position="floating">0€</ion-label>
-          <ion-input placeholder="0€"></ion-input>
+          <ion-input placeholder="0€" [(ngModel)]="amount"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -41,7 +42,7 @@
       <ion-col>
         <ion-list>
           <ion-item>
-            <ion-select placeholder="Select fruit">
+            <ion-select placeholder="Select fruit" [(ngModel)]="category">
               <ion-select-option value="apples">Apples</ion-select-option>
               <ion-select-option value="oranges">Oranges</ion-select-option>
               <ion-select-option value="bananas">Bananas</ion-select-option>
@@ -54,7 +55,7 @@
       <ion-col>
         <ion-item fill="outline">
           <ion-label position="floating">Outline input</ion-label>
-          <ion-input placeholder="Enter text"></ion-input>
+          <ion-input placeholder="Enter text" [(ngModel)]="description"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>

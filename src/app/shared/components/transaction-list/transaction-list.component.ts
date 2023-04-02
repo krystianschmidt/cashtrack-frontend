@@ -2,6 +2,7 @@ import {Component, Input, OnInit, SimpleChanges, ViewChild} from '@angular/core'
 import { Transaction } from "./transaction-card/transaction-card.model";
 import { exampleData } from "../../../example-data/transaction-card";
 import {Filter} from "../../../tabs/tab2/components/filter-transaction-list/filter-transaction-list.model";
+import {TransactionsService} from "../../../services/transactions/transactions.service";
 
 interface TransactionGroup {
   date: Date;
@@ -24,14 +25,17 @@ export class TransactionListComponent implements OnInit {
   transactionGroups: TransactionGroup[] = [];
   unfilteredTransactions: Transaction[] = [];
 
-  constructor() {
+  @Input() set transactions(value: Transaction[]){
+    this.unfilteredTransactions = value;
+    this.transactionGroups = this.groupTransactionsByDate(this.unfilteredTransactions);
+
+  }
+
+  constructor(private transactionService: TransactionsService) {
     this.selectedMonth = new Date().getMonth();
   }
 
   ngOnInit() {
-    // TODO: exampleData mit service ersetzen
-    this.unfilteredTransactions = exampleData;
-    this.transactionGroups = this.groupTransactionsByDate(this.unfilteredTransactions);
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -137,12 +141,25 @@ export class TransactionListComponent implements OnInit {
     this.applyFilter();
   }
 
+/*  addTransaction(newTransaction: Transaction) {
+    const date = new Date(newTransaction.timestamp);
+    date.setHours(0, 0, 0, 0); // Remove time from date
 
+    const groupIndex = this.transactionGroups.findIndex((group) => group.date.getTime() === date.getTime());
+
+    if (groupIndex !== -1) {
+      this.transactionGroups[groupIndex].transactions.push(newTransaction);
+    } else {
+      this.transactionGroups.push({ date, transactions: [newTransaction] });
+    }
+
+    // Re-apply the filter
+    this.applyFilter();
+    console.log('Added transaction:', newTransaction);
+  }*/
 
   loadMoreTransactions(event: Event) {
     setTimeout(() => {
-      // Load more transactions here and add them to the transactionGroups array
-
       const infiniteScrollElement = event.target as HTMLIonInfiniteScrollElement;
       infiniteScrollElement.complete().then(r => { }); // Mark the infinite scroll as complete
     }, 1000);

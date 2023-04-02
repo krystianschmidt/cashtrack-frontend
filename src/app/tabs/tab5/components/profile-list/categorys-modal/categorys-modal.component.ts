@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ModalController} from "@ionic/angular";
 import {Category} from "./categorys-modal.model";
 import {CreateCategoryModalComponent} from "./create-category-modal/create-category-modal.component";
-import {CategorysService} from "../../../../../services/categorys.service";
+import {CategorysService} from "../../../../../services/categories/categorys.service";
 
 @Component({
   selector: 'categorys-modal',

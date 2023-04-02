@@ -1,6 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {InfiniteScrollCustomEvent, IonInfiniteScroll} from "@ionic/angular";
 import {exampleData} from "../../../example-data/transaction-card";
+import {TransactionsService} from "../../../services/transactions/transactions.service";
+import {Transaction} from "../../../shared/components/transaction-list/transaction-card/transaction-card.model";
 
 @Component({
   selector: 'home-page',
@@ -9,11 +11,18 @@ import {exampleData} from "../../../example-data/transaction-card";
 })
 export class HomePageComponent {
   @Input() selectedMonth: number;
+  transactions: Transaction[] = [];
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.transactionService.getTransactions();
+    this.transactionService.transactions$.subscribe(val => {
+      this.transactions = val;
+      console.log(val)
+    })
   }
 
-  constructor() {
+
+  constructor(public transactionService: TransactionsService) {
     this.selectedMonth = new Date().getMonth();
   }
 

@@ -55,6 +55,9 @@
   </ion-row>
 
   <ion-row>
-    <transaction-list class="w-100" [selectedMonth]="selectedMonth"></transaction-list>
+    <transaction-list class="w-100"
+                      [transactions]="transactions"
+                      [selectedMonth]="selectedMonth"
+    ></transaction-list>
   </ion-row>
 </ion-grid>

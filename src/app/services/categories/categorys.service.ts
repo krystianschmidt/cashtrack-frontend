@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Category} from "../tabs/tab5/components/profile-list/categorys-modal/categorys-modal.model";
+import {Category} from "../../tabs/tab5/components/profile-list/categorys-modal/categorys-modal.model";
 
 @Injectable({
   providedIn: 'root'
