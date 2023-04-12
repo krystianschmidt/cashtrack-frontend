@@ -1,6 +1,8 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {TransactionListComponent} from "../../../shared/components/transaction-list/transaction-list.component";
 import {Filter} from "../components/filter-transaction-list/filter-transaction-list.model";
+import {TransactionsService} from "../../../services/transactions/transactions.service";
+import {Transaction} from "../../../shared/components/transaction-list/transaction-card/transaction-card.model";
 
 @Component({
   selector: 'transaction-page',
@@ -15,11 +17,19 @@ export class TransactionPageComponent  implements OnInit {
     category: null,
   };
 
+  transactions: Transaction[] = [];
 
-  constructor() {
+
+  constructor(public transactionService: TransactionsService) {
     this.selectedMonth = new Date().getMonth();
   }
 
-  ngOnInit() {}
-
+  async ngOnInit() {
+    this.transactionService.getTransactions();
+    this.transactionService.transactions$.subscribe(val => {
+      this.transactions = val;
+      console.log(val)
+    })
+  }
 }
+

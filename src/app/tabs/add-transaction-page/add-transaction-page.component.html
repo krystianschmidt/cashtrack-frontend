@@ -21,71 +21,73 @@
 </ion-header>
 
 <ion-content [ngClass]="isExpense ? 'ion-content-expense' : 'ion-content-income'" class="ion-padding">
-  <ion-grid [fixed]="true">
-    <ion-row>
-      <ion-col>
-        <ion-text color="medium">How much?</ion-text>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-item fill="outline">
-          <ion-label position="floating">0€</ion-label>
-          <ion-input placeholder="0€" [(ngModel)]="amount"></ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
-  <ion-grid [fixed]="true" class="transaction-list">
-    <ion-row>
-      <ion-col>
-        <ion-list>
-          <ion-item>
-            <ion-select placeholder="Select fruit" [(ngModel)]="category">
-              <ion-select-option value="apples">Apples</ion-select-option>
-              <ion-select-option value="oranges">Oranges</ion-select-option>
-              <ion-select-option value="bananas">Bananas</ion-select-option>
-            </ion-select>
+  <form (ngSubmit)="confirm()">
+    <ion-grid [fixed]="true">
+      <ion-row>
+        <ion-col>
+          <ion-text color="medium">How much?</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item fill="outline">
+            <ion-label position="floating">0€</ion-label>
+            <ion-input placeholder="0€" [(ngModel)]="amount" name="amount"></ion-input>
           </ion-item>
-        </ion-list>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-item fill="outline">
-          <ion-label position="floating">Outline input</ion-label>
-          <ion-input placeholder="Enter text" [(ngModel)]="description"></ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-button class="w-100" id="open-modal-add-attachment">
-          <ion-icon name="attach-outline"></ion-icon>
-          <ion-label>Add Attachment</ion-label>
-        </ion-button>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-row>
-          <ion-text>Repeat</ion-text>
-        </ion-row>
-        <ion-row>
-          <ion-text color="medium">Repeat Transaction</ion-text>
-        </ion-row>
-      </ion-col>
-      <ion-col class="ion-text-end">
-        <ion-toggle></ion-toggle>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 
-  <!--<ion-item>
-    <ion-label position="stacked">Your name</ion-label>
-    <ion-input [(ngModel)]="name" placeholder="Your name"></ion-input>
-  </ion-item>-->
+    <ion-grid [fixed]="true" class="transaction-list">
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <ion-item>
+              <ion-select placeholder="Select fruit" [(ngModel)]="category" name="category">
+                <ion-select-option value="apples">Apples</ion-select-option>
+                <ion-select-option value="oranges">Oranges</ion-select-option>
+                <ion-select-option value="bananas">Bananas</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item fill="outline">
+            <ion-label position="floating">Outline input</ion-label>
+            <ion-input placeholder="Enter text" [(ngModel)]="description" name="description"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button class="w-100" id="open-modal-add-attachment">
+            <ion-icon name="attach-outline"></ion-icon>
+            <ion-label>Add Attachment</ion-label>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-row>
+            <ion-text>Repeat</ion-text>
+          </ion-row>
+          <ion-row>
+            <ion-text color="medium">Repeat Transaction</ion-text>
+          </ion-row>
+        </ion-col>
+        <ion-col class="ion-text-end">
+          <ion-toggle></ion-toggle>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <!--<ion-item>
+      <ion-label position="stacked">Your name</ion-label>
+      <ion-input [(ngModel)]="name" placeholder="Your name"></ion-input>
+    </ion-item>-->
+  </form>
 </ion-content>
 
 <ion-footer>
