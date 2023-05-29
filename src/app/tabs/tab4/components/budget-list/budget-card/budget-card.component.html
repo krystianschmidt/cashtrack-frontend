@@ -1,3 +1,12 @@
-<p>
-  budget-card works!
-</p>
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>{{category.label}}</ion-card-title>
+    <ion-button (click)="onDeleteTransaction()">Delete</ion-button>
+  </ion-card-header>
+
+  <ion-card-content>
+    <div>Amount {{category.budget?.amount || 'no data'}}</div>
+    <div>Used Amount {{category.budget?.usedAmount || 'no data'}}</div>
+    <div>Exceeded {{category.budget?.isExceeded || 'no data'}}</div>
+  </ion-card-content>
+</ion-card>
