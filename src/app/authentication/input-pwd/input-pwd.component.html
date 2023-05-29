@@ -1,0 +1,18 @@
+<ion-item>
+  <ion-label>{{label}}</ion-label>
+  <input [type]="hide ? 'password' : 'text'" [formControl]="formControl" required>
+  <ion-button (click)="hide = !hide" [attr.aria-label]="'Hide password'" type="button" [attr.aria-pressed]="hide">
+    <ion-icon>{{hide ? 'visibility_off' : 'visibility'}}</ion-icon>
+  </ion-button>
+
+  <ion-label *ngIf="formControl.hasError('required')">Darf nicht leer sein!</ion-label>
+  <ion-label *ngIf="type === 'repeat' && formControl.errors?.['wrongRepeat']">Passwort stimmt nicht überein</ion-label>
+</ion-item>
+
+<ng-template #popover>
+  <div class="d-flex align-items-center" *ngFor="let reg of securePasswordRegEx">
+    <ion-icon *ngIf="checkRegex(reg.regex)" class="color-green">check_circle_outline</ion-icon>
+    <ion-icon *ngIf="!checkRegex(reg.regex)" class="color-red">cancel</ion-icon>
+    <small class="ms-1">{{reg.name}}</small>
+  </div>
+</ng-template>

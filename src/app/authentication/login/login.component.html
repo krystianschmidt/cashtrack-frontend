@@ -1,0 +1,32 @@
+
+
+<form (ngSubmit)="loginClicked()" class="d-inline-flex justify-content-center w-100 mb-5">
+
+  <div [formGroup]="formGroup" class="d-inline-grid w-75">
+    <span class="d-inline-grid pt-5 display-3">
+      Willkommen!
+      <span class="pt-4 h4">
+        Noch keinen Account?
+        <a routerLink="/auth/register">Registrieren</a>
+      </span>
+    </span>
+
+    <label class="pt-4 h6">Username</label>
+    <ion-item>
+      <ion-label>Username</ion-label>
+      <input placeholder="Username eingeben..." formControlName="username" maxlength="20" required>
+    </ion-item>
+
+    <label class="pt-4 h6">Passwort</label>
+    <input-pwd class="d-inline-grid" type="enter" (value)="credentials.password = $event" #pwd></input-pwd>
+
+    <div *ngIf="wrongCredentials" class="alert alert-danger">Falsche Anmeldedaten</div>
+
+    <ion-button class="mt-5" color="accent" type="submit"
+            [disabled]="this.formGroup.controls['username'].invalid || pwd.formControl.invalid">
+      Anmelden
+    </ion-button>
+  </div>
+
+</form>
+
