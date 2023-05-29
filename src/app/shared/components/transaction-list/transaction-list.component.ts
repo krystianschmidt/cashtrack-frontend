@@ -26,13 +26,14 @@ export class TransactionListComponent implements OnInit {
   unfilteredTransactions: Transaction[] = [];
 
   @Input() set transactions(value: Transaction[]){
+    console.log(value)
     this.unfilteredTransactions = value;
     this.transactionGroups = this.groupTransactionsByDate(this.unfilteredTransactions);
-
+    console.log(this.transactionGroups)
   }
 
   constructor(private transactionService: TransactionsService) {
-    this.selectedMonth = new Date().getMonth();
+    this.selectedMonth = new Date().getMonth()+1;
   }
 
   ngOnInit() {
@@ -55,6 +56,8 @@ export class TransactionListComponent implements OnInit {
       filteredTransactions = filteredTransactions.filter(transaction => transaction.amount < 0);
     }
 
+
+
     // Sort transactions
     if (this.filter.sortBy === 'highest') {
       filteredTransactions.sort((a, b) => Math.abs(b.amount) - Math.abs(a.amount));
@@ -73,12 +76,13 @@ export class TransactionListComponent implements OnInit {
       this.transactionGroups = filteredTransactions.map(transaction => ({ date: new Date(transaction.timestamp), transactions: [transaction] }));
     } else {
       this.transactionGroups = this.groupTransactionsByDate(filteredTransactions);
-    }  }
+    }
+  }
 
   groupTransactionsByDate(transactions: Transaction[]): TransactionGroup[] {
     const groups: TransactionGroup[] = [];
 
-    transactions = transactions.filter(transaction => new Date(transaction.timestamp).getMonth() === this.selectedMonth);
+    transactions = transactions.filter(transaction => new Date(transaction.timestamp).getMonth()+1 === this.selectedMonth);
 
     if(this.filter.sortBy === 'newest')
       // Sort the transactions by date in descending order

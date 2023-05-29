@@ -10,7 +10,21 @@ import {Transaction} from "../../../shared/components/transaction-list/transacti
   styleUrls: ['./transaction-page.component.scss'],
 })
 export class TransactionPageComponent  implements OnInit {
-  @Input() selectedMonth: number;
+  private _selectedMonth: number;
+  @Input() set selectedMonth(value: number){
+    this._selectedMonth = value;
+
+    this.transactionService.getTransactions(this._selectedMonth, new Date().getFullYear());
+    this.transactionService.transactions$.subscribe(val => {
+      this.transactions = val;
+      console.log(val)
+    })
+  }
+
+  get selectedMonth(){
+    return this._selectedMonth;
+  }
+
   @Input() filter: Filter = {
     filterBy: 'all',
     sortBy: 'newest',
@@ -21,15 +35,11 @@ export class TransactionPageComponent  implements OnInit {
 
 
   constructor(public transactionService: TransactionsService) {
-    this.selectedMonth = new Date().getMonth();
+    this._selectedMonth = new Date().getMonth()+1;
   }
 
   async ngOnInit() {
-    this.transactionService.getTransactions();
-    this.transactionService.transactions$.subscribe(val => {
-      this.transactions = val;
-      console.log(val)
-    })
+
   }
 }
 
