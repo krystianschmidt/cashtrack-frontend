@@ -51,7 +51,6 @@ export class CreateCategoryModalComponent  implements OnInit {
   ngOnInit() {}
 
   createCategory() {
-    this.category.id = Math.random().toString(36).substring(2, 15);
     this.modalCtrl.dismiss(this.category);
   }
 

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {CategorysService} from "../../../../services/categories/categorys.service";
+import {filter, map} from "rxjs";
+import {Category} from "../../../tab5/components/profile-list/categorys-modal/categorys-modal.model";
 
 @Component({
   selector: 'budget-list',
@@ -7,8 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BudgetListComponent  implements OnInit {
 
-  constructor() { }
+  categories$ = this.categorysService.categories$.pipe(
+    map( categories => categories.filter(c => c.budget?.amount != null))
+  )
 
-  ngOnInit() {}
+  constructor(private categorysService: CategorysService) { }
+
+  ngOnInit() {
+    this.categories$.subscribe()
+  }
 
 }
