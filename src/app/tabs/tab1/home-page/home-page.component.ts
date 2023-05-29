@@ -10,15 +10,24 @@ import {Transaction} from "../../../shared/components/transaction-list/transacti
   styleUrls: ['./home-page.component.scss'],
 })
 export class HomePageComponent {
-  @Input() selectedMonth: number;
-  transactions: Transaction[] = [];
+  private _selectedMonth: number = 0;
+  @Input() set selectedMonth(value: number){
+    this._selectedMonth = value;
 
-  async ngOnInit() {
-    this.transactionService.getTransactions();
+    this.transactionService.getTransactions(this._selectedMonth, new Date().getFullYear());
     this.transactionService.transactions$.subscribe(val => {
       this.transactions = val;
       console.log(val)
     })
+  }
+
+  get selectedMonth(){
+    return this._selectedMonth;
+  }
+
+  transactions: Transaction[] = [];
+
+  async ngOnInit() {
   }
 
 
