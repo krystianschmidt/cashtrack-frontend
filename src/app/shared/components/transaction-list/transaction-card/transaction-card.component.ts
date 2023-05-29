@@ -10,7 +10,7 @@ import {ModalController} from "@ionic/angular";
 })
 export class TransactionCardComponent  implements OnInit {
 
-  @Input() transaction?: Transaction;
+  @Input() transaction!: Transaction;
   @Output() transactionDeleted = new EventEmitter<string>();
 
   constructor(private modalController: ModalController) {

@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Transaction} from "../transaction-card.model";
 import {ModalController} from "@ionic/angular";
+import {TransactionsService} from "../../../../../services/transactions/transactions.service";
 
 @Component({
   selector: 'transaction-detail',
@@ -9,7 +10,7 @@ import {ModalController} from "@ionic/angular";
 })
 export class TransactionDetailComponent  implements OnInit {
   @Input() transaction!: Transaction;
-  @Output() deleteTransaction = new EventEmitter<string>();
+  // @Output() deleteTransaction = new EventEmitter<string>();
 
   public editMode = false;
 
@@ -18,7 +19,8 @@ export class TransactionDetailComponent  implements OnInit {
   }
 
 
-  constructor(private modalCtrl: ModalController) {}
+  constructor(private modalCtrl: ModalController,
+              private transactionsService: TransactionsService) {}
 
   get isExpense(): boolean {
     return this.transaction.amount < 0;
@@ -29,7 +31,10 @@ export class TransactionDetailComponent  implements OnInit {
   }
 
   onDeleteTransaction() {
-    this.deleteTransaction.emit(this.transaction.id);
+    this.transactionsService.deleteTransaction(this.transaction.id).then(() => {
+      return this.modalCtrl.dismiss(null, 'delete')
+    });
+    // this.deleteTransaction.emit(this.transaction.id);
   }
 
   ngOnInit() {}
