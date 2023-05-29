@@ -2,6 +2,9 @@ import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core'
 import {IonModal, ModalController} from "@ionic/angular";
 import {Transaction} from "../../shared/components/transaction-list/transaction-card/transaction-card.model";
 import {TransactionsService} from "../../services/transactions/transactions.service";
+import {Category} from "../tab5/components/profile-list/categorys-modal/categorys-modal.model";
+import {IAmService} from "../../services/authentification/i-am.service";
+import {CategorysService} from "../../services/categories/categorys.service";
 
 @Component({
   selector: 'add-transaction-page',
@@ -10,14 +13,31 @@ import {TransactionsService} from "../../services/transactions/transactions.serv
 })
 export class AddTransactionPageComponent  implements OnInit {
 
-  category!: string;
+  category: Category = {
+    label: '',
+    iconName: '',
+    color:''
+  };
   amount!: number;
   description!: string;
   isExpense = false;
 
-  constructor(private modalCtrl: ModalController, private transactionService: TransactionsService) {}
+  categories: Category[] = [];
 
-  ngOnInit() {}
+  constructor(private modalCtrl: ModalController,
+              private transactionService: TransactionsService,
+              private categorysService: CategorysService) {}
+
+  ngOnInit(){
+    this.categorysService.categories$.subscribe(categories => {
+      this.categories = categories;
+    })
+    if(this.categorysService.categories && this.categorysService.categories.length > 0){
+      this.categories = this.categorysService.categories;
+    }else{
+      this.categorysService.getCategories();
+    }
+  }
 
   cancel() {
     return this.modalCtrl.dismiss(null, 'cancel');
@@ -36,7 +56,6 @@ export class AddTransactionPageComponent  implements OnInit {
     const transaction: Transaction = {
       id: this.generateID(),
       category: this.category,
-      icon: '', // You need to determine how to set the icon based on the category
       description: this.description,
       amount: this.isExpense ? -this.amount : this.amount,
       timestamp: new Date(),
@@ -49,4 +68,8 @@ export class AddTransactionPageComponent  implements OnInit {
     return Math.random().toString(36).substr(2, 9);
   }
 
+  addCategory(e: any) {
+    console.log(e)
+    this.category = e.detail.value;
+  }
 }

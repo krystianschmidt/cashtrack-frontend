@@ -23,7 +23,7 @@
     <ion-item *ngFor="let category of categories">
       <ion-icon [name]="category.iconName" slot="start" [style.color]="category.color"></ion-icon>
       <ion-label>{{ category.label }}</ion-label>
-      <ion-button fill="clear" slot="end" (click)="deleteCategory(category.id)">
+      <ion-button fill="clear" slot="end" (click)="deleteCategory(category.id!)">
         <ion-icon color="danger" name="trash-outline"></ion-icon>
       </ion-button>
     </ion-item>

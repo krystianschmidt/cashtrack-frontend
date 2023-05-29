@@ -15,7 +15,10 @@ export class CategorysModalComponent  implements OnInit {
   constructor(private modalCtrl: ModalController, private categoriesService: CategorysService, private modalController: ModalController) {}
 
   ngOnInit() {
-    this.categories = this.categoriesService.getCategories();
+    this.categoriesService.categories$.subscribe(categories => {
+      this.categories = categories
+    });
+    this.categoriesService.getCategories();
   }
 
   async openCreateCategoryModal() {
@@ -26,7 +29,6 @@ export class CategorysModalComponent  implements OnInit {
     modal.onDidDismiss().then((result) => {
       if (result.data) {
         this.categoriesService.createCategory(result.data);
-        this.categories = this.categoriesService.getCategories();
       }
     });
 
@@ -35,7 +37,6 @@ export class CategorysModalComponent  implements OnInit {
 
   deleteCategory(categoryId: string) {
     this.categoriesService.deleteCategory(categoryId);
-    this.categories = this.categoriesService.getCategories();
   }
 
   cancel() {
