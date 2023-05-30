@@ -3,6 +3,7 @@ import {TransactionListComponent} from "../../../shared/components/transaction-l
 import {Filter} from "../components/filter-transaction-list/filter-transaction-list.model";
 import {TransactionsService} from "../../../services/transactions/transactions.service";
 import {Transaction} from "../../../shared/components/transaction-list/transaction-card/transaction-card.model";
+import {IonModal} from "@ionic/angular";
 
 @Component({
   selector: 'transaction-page',
@@ -11,6 +12,8 @@ import {Transaction} from "../../../shared/components/transaction-list/transacti
 })
 export class TransactionPageComponent  implements OnInit {
   private _selectedMonth: number;
+  @ViewChild(IonModal) modal!: IonModal;
+
   @Input() set selectedMonth(value: number){
     this._selectedMonth = value;
 
@@ -40,6 +43,11 @@ export class TransactionPageComponent  implements OnInit {
 
   async ngOnInit() {
 
+  }
+
+
+  cancel() {
+    this.modal.dismiss(null, 'cancel');
   }
 }
 

@@ -4,7 +4,7 @@ year > month > week > day
 
 <ion-grid>
   <ion-row class="ion-justify-content-center">
-    <ion-button>See your financial report ></ion-button>
+    <ion-button id="open-modal-report">See your financial report ></ion-button>
   </ion-row>
   <ion-row>
     <transaction-list class="w-100"
@@ -14,3 +14,26 @@ year > month > week > day
     ></transaction-list>
   </ion-row>
 </ion-grid>
+
+
+<ion-modal trigger="open-modal-report">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-button (click)="cancel()">Cancel</ion-button>
+        </ion-buttons>
+        <ion-title>Report for ...</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content class="ion-padding d-grid">
+      <div>You Spend: </div>
+      <div>biggest spending is from: </div>
+      <div>You Earned: </div>
+      <div>biggest income is from: </div>
+      <div>This Categories exceeds the limit: </div>
+    </ion-content>
+  </ng-template>
+</ion-modal>
+

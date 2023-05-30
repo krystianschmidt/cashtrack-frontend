@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Category} from "../../../../tab5/components/profile-list/categorys-modal/categorys-modal.model";
 import {Budget} from "./budget.model";
+import {TransactionsService} from "../../../../../services/transactions/transactions.service";
+import {CategorysService} from "../../../../../services/categories/categorys.service";
 
 @Component({
   selector: 'budget-card',
@@ -11,8 +13,18 @@ export class BudgetCardComponent  implements OnInit {
   @Input() category!: Category;
 
 
-  constructor() { }
+  constructor(private categorysService: CategorysService) {
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
+  onDeleteTransaction() {
+
+    if (this.category.id) {
+      this.categorysService.deleteBudget(this.category.id);
+    } else {
+      console.error("Category has no id");
+    }
+  }
 }
