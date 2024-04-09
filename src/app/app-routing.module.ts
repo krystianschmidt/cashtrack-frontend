@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import {mapToCanActivate, PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {AuthGuard} from "./guards/auth.guard";
 import {LoginGuard} from "./guards/login.guard";
 
@@ -7,12 +7,12 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule),
-    canActivate: [AuthGuard]
+    canActivate: mapToCanActivate([AuthGuard])
   },
   {
     path: 'auth',
     loadChildren: () => import('./authentication/authentication.module').then( m => m.AuthenticationModule),
-    canActivate: [LoginGuard]
+    canActivate: mapToCanActivate([LoginGuard])
   }
 ];
 @NgModule({

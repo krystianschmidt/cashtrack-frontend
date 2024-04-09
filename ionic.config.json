@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "cashtrack",
   "integrations": {
     "capacitor": {}
   },
